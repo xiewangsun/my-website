@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f8fafc" />
+    <meta
+      name="description"
+      content="一句话介绍你自己——你的名字的个人品牌站：项目作品、关于我与联系方式。"
+    />
+    <meta property="og:title" content="你的名字 · 个人品牌站" />
+    <meta
+      property="og:description"
+      content="一句话介绍你自己——你的名字的个人品牌站：项目作品、关于我与联系方式。"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://your-username.github.io/my-website/" />
+    <title>你的名字 · 个人品牌站</title>
+    <script>
+      // 防 FOUC：首帧绘制前根据存储值（无则系统偏好）给 <html> 挂 .dark 类，
+      // 不依赖应用脚本加载完成
+      ;(function () {
+        try {
+          var stored = localStorage.getItem('theme')
+          var dark = stored
+            ? stored === 'dark'
+            : window.matchMedia('(prefers-color-scheme: dark)').matches
+          if (dark) document.documentElement.classList.add('dark')
+        } catch (e) {}
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

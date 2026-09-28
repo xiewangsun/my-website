@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    color-scheme: light;
+
+    /* 粒子层配色（Canvas 读取，配色只定义在这一处） */
+    --particle-dot-color: rgba(79, 70, 229, 0.55);
+    --particle-line-color: rgba(79, 70, 229, 0.16);
+  }
+
+  .dark {
+    color-scheme: dark;
+
+    --particle-dot-color: rgba(129, 140, 248, 0.6);
+    --particle-line-color: rgba(129, 140, 248, 0.14);
+  }
+
+  /* 基础底色走 CSS 而非组件类：保证应用脚本加载前（首帧）暗色即生效，避免 FOUC */
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased;
+  }
+
+  .dark body {
+    @apply bg-slate-950 text-slate-100;
+  }
+
+  /* 锚点平滑滚动：仅在用户未开启「减少动态效果」时生效 */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+}
